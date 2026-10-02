@@ -1,83 +1,37 @@
-# Contexto del Proyecto — Semana 4: "Relación de Modelos en Django"
-
-## Integrantes del equipo
-
-| Nombre | Rol |
-|--------|-----|
-| | Integrante 1 |
-| | Integrante 2 |
-| | Integrante 3 |
+# Contexto del Proyecto — Semana 5: "Administrador con Django"
 
 ## Objetivo
 
-Implementar un sistema de biblioteca con relaciones entre modelos:
-ForeignKey, OneToOneField, ManyToManyField y modelo intermedio con `through`.
+Gestionar un catálogo de películas desde el administrador de Django: modelos relacionados,
+personalización con `ModelAdmin` y control de acceso con usuarios, grupos y permisos.
 
 ## Contexto del laboratorio
 
-El proyecto es **acumulativo**: se parte del resultado de la semana anterior.
-Cada semana se trabaja en equipo y se sube a un solo repositorio de GitHub.
+El proyecto es **acumulativo**: parte del resultado de la semana 4 (app `library`) y añade la app `movies`.
 
 ## Criterios de evaluación (20 puntos)
 
 | # | Criterio | Puntos |
 |---|----------|--------|
-| 1 | Configura las relaciones con ForeignKey, OneToOneField y ManyToManyField | 5 |
-| 2 | Declara el modelo intermedio con through para la relación con datos propios | 5 |
-| 3 | Consulta en ambos sentidos y comprueba el efecto de on_delete | 5 |
-| 4 | Entrega el repositorio con el modelo relacional y sus observaciones | 5 |
+| 1 | Configura el administrador para gestionar los modelos relacionados | 5 |
+| 2 | Personaliza listado, filtros y búsqueda con ModelAdmin | 5 |
+| 3 | Administra el acceso con usuarios, grupos y permisos | 5 |
+| 4 | Entrega el repositorio con la configuración del panel y sus observaciones | 5 |
 
 ## Requerimientos específicos
 
-### Modelo Author (ForeignKey)
-- Declarar modelo Author con campos propios
-- Enlazar Book con Author mediante ForeignKey
-- Elegir el on_delete correcto y related_name legible
-
-### Modelo AuthorProfile (OneToOneField)
-- Añadir perfil de autor con OneToOneField
-- Separar datos biográficos del registro principal
-
-### Modelos Book, Category y Publisher
-- Declarar modelos con campos propios y Meta
-- Relacionar Book con Category mediante ManyToManyField
-
-### Modelo Publication (through)
-- Relacionar Book con Publisher a través del modelo intermedio Publication
-- Guardar fecha y edición en el modelo intermedio
-- Consultar desde ambos lados
-
-### Migraciones
-- Generar y aplicar migraciones
-- Comprobar en la base de datos qué tablas se crearon
-
-### Datos de prueba
-- Cargar desde el administrador:
-  - 2 autores
-  - 4 libros (al menos uno en 2 categorías)
-  - 3 categorías
-  - 2 editoriales
-
-### Consultas en Django Shell
-- Consulta de ida: libro.autor
-- Consulta de vuelta: autor.libros.all()
-- Filtrado con doble guion bajo
-
-### Verificación on_delete
-- Provocar borrado de autor con libros (documentar resultado)
-- Cambiar on_delete a PROTECT y comparar
-
-### Vista de detalle
-- Plantilla de detalle de libro con:
-  - Categorías
-  - Editorial
-  - Datos del autor
-
-### Evidencias
-- Diagrama de modelos
-- Capturas de consultas
-- Capturas del administrador
-- Estructura del proyecto en VS Code
+1. Declarar la app `movies` en `INSTALLED_APPS` e instalar Pillow.
+2. Modelos `Movie`, `Genre`, `Person` y `Rating` con campos, `Meta` y `__str__` (Movie↔Genre N:M, Rating→Movie FK).
+3. Migraciones y superusuario.
+4. Registro simple en `admin.py` y comprobar el CRUD sin vistas.
+5. `ModelAdmin` con `list_display`, `list_filter` (género, año) y `search_fields` (título, nombre).
+6. Valoraciones como inline dentro de la película.
+7. Campos de auditoría de solo lectura.
+8. Datos de prueba: 10 películas, 4 géneros y valoraciones en al menos 5.
+9. Grupo «editores» (añadir y cambiar películas, sin eliminar) y usuario de prueba.
+10. Vista pública de recomendación: películas del mismo género mejor valoradas.
+11. Capturas antes/después y superusuario vs editor.
+12. Subir el proyecto al repositorio y el entregable al campus.
 
 ## Normas
 
@@ -87,11 +41,3 @@ Cada semana se trabaja en equipo y se sube a un solo repositorio de GitHub.
 - settings.py sin credenciales escritas a mano
 - Código, nombres de variables y comentarios en **inglés**
 - Entregables y explicaciones en **español**
-
-## Recursos
-
-- Python 3.12+
-- Node.js 20+
-- Git
-- Visual Studio Code
-- Pillow (para campos de imagen)

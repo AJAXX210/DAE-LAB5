@@ -8,23 +8,23 @@ Dirige el flujo de trabajo, valida hallazgos y decide próximos pasos.
 
 ## Programmer
 Implementa el código Python/Django según lo definido.
-- Crea y modifica modelos, vistas, forms, templates
-- Ejecuta migraciones, tests y verifica funcionamiento
-- Aplica PEP 8 y estructura Django recomendada
+- Crea la app `movies`: modelos, migraciones y vistas
+- Configura el administrador con `ModelAdmin`, `RatingInline` y `readonly_fields`
+- Crea el grupo `editores` con una migración de datos
+- Ejecuta migraciones y tests, y aplica PEP 8
 
 ## Documentor
 Audita requisitos, rúbrica y evidencia del laboratorio.
-- Verifica que cada requisito esté cubierto
-- Identifica gaps y crea matriz REQUISITO→IMPLEMENTACIÓN→EVIDENCIA
+- Verifica que cada paso de la guía esté cubierto
+- Carga los datos de prueba desde el panel y toma las capturas antes/después y superusuario vs editor
 - NO modifica código
 
 ## Frontend
-Configura plantillas, statics y estructura visual.
-- Templates de lista y detalle de libros
+Configura plantillas y estructura visual.
+- Catálogo con portadas y vista de recomendaciones
 - Tailwind CSS para estilos responsivos
-- HTMX si aplica
 
 ## Git-Github
-Inicializa repositorio, maneja ramas y commits.
-- `git init`, `.gitignore`, `commit`, `push`
-- Documenta quién hizo qué en los mensajes
+Maneja el repositorio y los commits.
+- Un commit por bloque de cambio, con mensaje en español que describe qué se modificó
+- No sube `.env`, la base de datos, `media/` ni carpetas de herramientas locales
